@@ -1,0 +1,10 @@
+Go into ~/.dotfiles
+
+-n flag = simulation mode, see what would happen
+--adopt = overwrite files
+
+stow -vt ~ * # Create config binds for everything
+stow -vt ~ htop # Only create binds for "htop" folder
+
+stow -vtD ~ * # Remove configs binds for everything
+stow -vtD ~ htop # Only remove binds for "htop" folder
