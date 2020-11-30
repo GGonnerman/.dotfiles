@@ -11,14 +11,14 @@ Config { font = "xft:Mononoki Nerd Font:pixelsize=12:antialias=true:hinting=true
                       Run Com "uname" ["-r"] "" 36000
                       -- Memory Usage'
                     , Run Date "%a %b %-d %Y (%-l:%M:%S %p)" "date" 10
-		      -- Battery
-		    , Run Com "battery" [] "battery" 30
-		      -- Slack notifications
-                    , Run Com "slack-notifications" [] "slack" 1
+                      -- Battery
+                    , Run Com "/home/twoonesecond/bin/battery" [] "battery" 30
+                      -- Slack notifications
+                    , Run Com "/home/twoonesecond/bin/slack-cmds/slack-notifications" [] "slack" 1
                       -- Check for volume
-                    , Run Com "get-volume-xmobar" [] "get-volume-xmobar" 10
+                    , Run Com "/home/twoonesecond/bin/get-volume-xmobar" [] "get-volume-xmobar" 10
                       -- Check for current song
-                    , Run Com "song-status-xmobar" [] "song-status-xmobar" 10
+                    , Run Com "/home/twoonesecond/bin/song-status-xmobar" [] "song-status-xmobar" 10
                       -- Check for pacman updates
                     , Run UnsafeStdinReader
                     ]

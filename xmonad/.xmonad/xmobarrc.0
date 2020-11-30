@@ -15,12 +15,12 @@ Config { font = "xft:Mononoki Nerd Font:pixelsize=12:antialias=true:hinting=true
                     , Run Memory [ "-t", "<used>M (<usedratio>%)"] 20
                       -- Date and time
                     , Run Date "%a %b %-d %Y (%-l:%M:%S %p)" "date" 10
-		      -- Battery
-		    , Run Com "battery" [] "battery" 30
+                      -- Battery
+                    , Run Com "/home/twoonesecond/bin/battery" [] "battery" 30
                       -- Check for slack notifications
-                    , Run Com "slack-notifications" [] "slack" 1
+                    , Run Com "/home/twoonesecond/bin/slack-cmds/slack-notifications" [] "slack" 1
                       -- Check for pacman updates
-                    , Run Com "pacupdate" [] "pacupdate" 1000
+                    , Run Com "/home/twoonesecond/bin/pacupdate" [] "pacupdate" 1000
                       -- Clickable workspaces
                     , Run UnsafeStdinReader
                     ]
