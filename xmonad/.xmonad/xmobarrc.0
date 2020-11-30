@@ -1,0 +1,30 @@
+Config { font = "xft:Mononoki Nerd Font:pixelsize=12:antialias=true:hinting=true"
+       , additionalFonts = [ "xft:FontAwesome:pixelsize=13", "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=true" ]
+       , bgColor = "#292d3e"
+       , fgColor = "#b45bcf"
+       , lowerOnStart = True
+       , hideOnStart = False
+       , allDesktops = True
+       , iconRoot = "/home/twoonesecond/.xmonad/xpm/"
+       , commands = [
+                      -- Gets kernal version
+                      Run Com "uname" ["-r"] "" 36000
+                      -- CPU Usage
+                    , Run Cpu [ "-t", "<total>%", "-L", "15", "-H", "58", "--normal", "green", "--high", "red"] 12
+                      -- Memory Usage'
+                    , Run Memory [ "-t", "<used>M (<usedratio>%)"] 20
+                      -- Date and time
+                    , Run Date "%a %b %-d %Y (%-l:%M:%S %p)" "date" 10
+		      -- Battery
+		    , Run Com "battery" [] "battery" 30
+                      -- Check for slack notifications
+                    , Run Com "slack-notifications" [] "slack" 1
+                      -- Check for pacman updates
+                    , Run Com "pacupdate" [] "pacupdate" 1000
+                      -- Clickable workspaces
+                    , Run UnsafeStdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " <icon=haskell_20.xpm/><fc=#666666> | </fc>%UnsafeStdinReader% }{<fc=#b3afc2> %uname%</fc><fc=#666666> | </fc><fc=#eFa85C>[CPU %cpu%]</fc><fc=#666666> | </fc><fc=#eF4545>[RAM %memory%]</fc><fc=#666666> | </fc>%battery%<fc=#666666> | </fc><fc=#a0bfbf>[SLK %slack%]</fc><fc=#666666> | </fc><fc=#b17ccf>[PAC %pacupdate%]</fc><fc=#666666> | </fc><fc=#8BE9FD>%date%</fc> "
+}

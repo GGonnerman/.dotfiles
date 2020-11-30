@@ -56,6 +56,10 @@ set nu rnu
 " Enable mouse scrolling
 set mouse=a
 
+" Enable folding
+set foldmethod=marker
+nnoremap <space> za
+
 " No annoying sounds on errors
 set noerrorbells
 set novisualbell
