@@ -121,10 +121,15 @@ if has("autocmd")
 endif
 
 " Bind F9 to save file if modified and execute python script in a buffer.
-nnoremap <silent> <F9> :call SaveAndExecutePython()<CR>
-vnoremap <silent> <F9> :<C-u>call SaveAndExecutePython()<CR>
+nnoremap <silent> <F9> :call SaveAndExecute()<CR>
+vnoremap <silent> <F9> :<C-u>call SaveAndExecute()<CR>
 
-function! SaveAndExecutePython()
+" TODO: Make this cleaner
+autocmd FileType python nnoremap <silent> <F9> :call SaveAndExecute("python")<CR>
+autocmd FileType javascript nnoremap <silent> <F9> :call SaveAndExecute("javascript")<CR>
+autocmd FileType java nnoremap <silent> <F9> :call SaveAndExecute("java")<CR>
+
+function! SaveAndExecute(language)
     " SOURCE [reusable window]: https://github.com/fatih/vim-go/blob/master/autoload/go/ui.vim
 
     " save and reload current file
@@ -133,7 +138,7 @@ function! SaveAndExecutePython()
     " get file path of current file
     let s:current_buffer_file_path = expand("%")
 
-    let s:output_buffer_name = "Python"
+    let s:output_buffer_name = a:language
     let s:output_buffer_filetype = "output"
 
     " reuse existing buffer window if it exists otherwise create a new one
@@ -164,7 +169,13 @@ function! SaveAndExecutePython()
     %delete _
 
     " add the console output
-    silent execute ".!python " . shellescape(s:current_buffer_file_path, 1)
+    if a:language =~ "python"
+        silent execute ".!python " . shellescape(s:current_buffer_file_path, 1)
+    elseif a:language =~ "javascript"
+        silent execute ".!node " . shellescape(s:current_buffer_file_path, 1)
+    elseif a:language =~ "java"
+        silent execute ".!java " . shellescape(s:current_buffer_file_path, 1)
+    endif
 
     " resize window to content length
     " Note: This is annoying because if you print a lot of lines then your code buffer is forced to a height of one line every time you run this function.
