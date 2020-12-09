@@ -23,11 +23,6 @@ if (has('termguicolors'))
     set termguicolors
 endif
 
-
-" Material theme config
-"let g:material_terminal_italics = 1
-"let g:material_theme_style = 'palenight'
-
 " air-line
 let g:airline_powerline_fonts = 1
 
@@ -63,7 +58,7 @@ colorscheme material
 let g:airline_theme='material'
 
 " Dont alter background color
-" hi Normal guibg=NONE
+hi Normal guibg=NONE
 " hi LineNr guifg=#676e95
 " hi CursorLineNr guifg=#89ddff
 

@@ -12,6 +12,11 @@ au FocusGained,BufEnter * checktime
 " Enable syntax highlighting
 syntax enable
 
+set foldmethod=marker
+nnoremap <space> za
+vnoremap <space> zf
+
+" Don't copy stuff when deleting
 nnoremap d "_d
 vnoremap d "_d
 
@@ -57,8 +62,8 @@ set nu rnu
 set mouse=a
 
 " Enable folding
-set foldmethod=marker
-nnoremap <space> za
+" set foldmethod=marker
+" nnoremap <space> za
 
 " No annoying sounds on errors
 set noerrorbells
@@ -120,14 +125,16 @@ if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*.sh :call CleanExtraSpaces()
 endif
 
-" Bind F9 to save file if modified and execute python script in a buffer.
-nnoremap <silent> <F9> :call SaveAndExecute()<CR>
-vnoremap <silent> <F9> :<C-u>call SaveAndExecute()<CR>
-
 " TODO: Make this cleaner
 autocmd FileType python nnoremap <silent> <F9> :call SaveAndExecute("python")<CR>
 autocmd FileType javascript nnoremap <silent> <F9> :call SaveAndExecute("javascript")<CR>
 autocmd FileType java nnoremap <silent> <F9> :call SaveAndExecute("java")<CR>
+autocmd FileType python inoremap <silent> <F9> <esc>:call SaveAndExecute("python")<CR>
+autocmd FileType javascript inoremap <silent> <F9> <esc>:call SaveAndExecute("javascript")<CR>
+autocmd FileType java inoremap <silent> <F9> <esc>:call SaveAndExecute("java")<CR>
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:output") && b:output == "primary") | q | endif
+
 
 function! SaveAndExecute(language)
     " SOURCE [reusable window]: https://github.com/fatih/vim-go/blob/master/autoload/go/ui.vim
@@ -176,6 +183,13 @@ function! SaveAndExecute(language)
     elseif a:language =~ "java"
         silent execute ".!java " . shellescape(s:current_buffer_file_path, 1)
     endif
+
+    let b:output = "primary"
+
+    silent execute "resize 5"
+    silent execute "wincmd k"
+
+
 
     " resize window to content length
     " Note: This is annoying because if you print a lot of lines then your code buffer is forced to a height of one line every time you run this function.
