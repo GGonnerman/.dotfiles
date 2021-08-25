@@ -2,3 +2,4 @@
 *.o
 xmonad.errors
 xmonad-x86_64-linux
+nvim/.config/nvim/plugged/

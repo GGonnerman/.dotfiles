@@ -27,6 +27,8 @@ vnoremap <space> zf
 nnoremap d "_d
 vnoremap d "_d
 
+command Sp :set spell
+
 " :W sudo saving for permission-denied errors
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
@@ -36,7 +38,7 @@ set so=4
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*.DS_Store
 
-" Always show curent position
+" Always show current position
 set ruler
 
 " height of command bar

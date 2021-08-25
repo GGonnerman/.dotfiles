@@ -49,7 +49,7 @@ myStartupHook :: X ()
 myStartupHook = do
             spawnOnce "nitrogen --restore &"
 	    --spawnOnce "wallset --video ~/Videos/Retro.mp4"
-            spawnOnce "picom --backend glx &"
+            spawnOnce "picom --backend glx --no-use-damage &"
             spawnOnce "urxvtd &"
 	    spawnOnce "synching --no-browser &"
             spawnOnce "nm-applet &"

@@ -10,6 +10,7 @@ call plug#begin('~/.config/nvim/plugged')
  Plug 'vim-airline/vim-airline' " Enable airline
  Plug 'vim-airline/vim-airline-themes' " Add airline themes
 " Plug 'kaicataldo/material.vim' " Material them
+ Plug 'rhysd/vim-grammarous'
 call plug#end()
 
 let g:python_highlight_all = 1

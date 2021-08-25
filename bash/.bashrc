@@ -24,16 +24,16 @@ PS1='[\u@\h \W]\$ '
 # {{{ Adding binaries to path
 
 # Add ~/.local/bin
-if [ -d "$HOME/.local/bin" ] ;
-	then PATH="$HOME/.local/bin${PATH:+:${PATH}}"
+if [ -d "$HOME/.local/bin" ]; then
+	PATH="$HOME/.local/bin${PATH:+:${PATH}}"
 fi
 # Add ~/bin
-if [ -d "$HOME/bin" ] ;
-	then PATH="$HOME/bin${PATH:+:${PATH}}"
+if [ -d "$HOME/bin" ]; then
+	PATH="$HOME/bin${PATH:+:${PATH}}"
 fi
 # Add npm
-if [ -d "$HOME/.npm-global/bin" ] ;
-	then PATH="$HOME/.npm-global/bin:%$PATH"
+if [ -d "$HOME/.npm-global/bin" ]; then
+	PATH="$HOME/.npm-global/bin:$PATH"
 fi
 
 # }}}
