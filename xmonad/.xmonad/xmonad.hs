@@ -51,7 +51,7 @@ myStartupHook = do
 	    --spawnOnce "wallset --video ~/Videos/Retro.mp4"
             spawnOnce "picom --backend glx --no-use-damage &"
             spawnOnce "urxvtd &"
-	    spawnOnce "synching --no-browser &"
+            spawnOnce "syncthing --no-browser &"
             spawnOnce "nm-applet &"
             --spawnOnce "xautolock -time 10 -corners -+-- -cornerdelay 1 -cornerredelay 10 -locker lock &"
             spawnOnce "/home/twoonesecond/.screenlayout/2.sh &"
