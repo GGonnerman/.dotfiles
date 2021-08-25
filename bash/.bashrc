@@ -123,4 +123,10 @@ alias tb='nc termbin.com 9999'
 # Terminal rickroll
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
+# Move to school folder
+alias sc='cd /home/twoonesecond/School; ls'
+
+# SSH Into raspberrypi
+alias pi='sshpass -p 0165 ssh pi@192.168.1.208'
+
 # }}}

@@ -18,13 +18,17 @@ Config { font = "xft:Mononoki Nerd Font:pixelsize=12:antialias=true:hinting=true
                       -- Battery
                     , Run Com "/home/twoonesecond/bin/battery" [] "battery" 30
                       -- Check for slack notifications
-                    , Run Com "/home/twoonesecond/bin/slack-cmds/slack-notifications" [] "slack" 1
+                    -- , Run Com "/home/twoonesecond/bin/slack-cmds/slack-notifications" [] "slack" 1
                       -- Check for pacman updates
                     , Run Com "/home/twoonesecond/bin/pacupdate" [] "pacupdate" 1000
+                      -- Check for volume
+                    , Run Com "/home/twoonesecond/bin/get-volume-xmobar" [] "get-volume-xmobar" 10
+                      -- Check for current song
+                    , Run Com "/home/twoonesecond/bin/song-status-xmobar" [] "song-status-xmobar" 10
                       -- Clickable workspaces
                     , Run UnsafeStdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <icon=haskell_20.xpm/><fc=#666666> | </fc>%UnsafeStdinReader% }{<fc=#b3afc2> %uname%</fc><fc=#666666> | </fc><fc=#eFa85C>[CPU %cpu%]</fc><fc=#666666> | </fc><fc=#eF4545>[RAM %memory%]</fc><fc=#666666> | </fc>%battery%<fc=#666666> | </fc><fc=#a0bfbf>[SLK %slack%]</fc><fc=#666666> | </fc><fc=#b17ccf>[PAC %pacupdate%]</fc><fc=#666666> | </fc><fc=#8BE9FD>%date%</fc> "
+       , template = " <icon=haskell_20.xpm/><fc=#666666> | </fc>%UnsafeStdinReader% }{%song-status-xmobar%%get-volume-xmobar%<fc=#666666> | </fc>%battery%<fc=#666666> | </fc><fc=#8BE9FD>%date%</fc> "
 }

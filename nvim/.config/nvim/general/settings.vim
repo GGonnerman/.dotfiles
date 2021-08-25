@@ -9,6 +9,13 @@ filetype plugin indent on
 set autoread
 au FocusGained,BufEnter * checktime
 
+" Dont break words
+set linebreak
+
+" Move through line wraps
+noremap <expr> j v:count ? 'j' : 'gj'
+noremap <expr> k v:count ? 'k' : 'gk'
+
 " Enable syntax highlighting
 syntax enable
 

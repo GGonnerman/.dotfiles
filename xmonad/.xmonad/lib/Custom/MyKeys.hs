@@ -53,8 +53,8 @@ myKeys =
         , ("M-d", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
 
     -- Monitors
-        , ("M-C-s", spawn "sh /home/twoonesecond/.screenlayout/single-monitor.sh")
-        , ("M-C-a", spawn "sh /home/twoonesecond/.screenlayout/dual-monitor.sh && xmonad --restart")
+        , ("M-C-s", spawn "sh /home/twoonesecond/.screenlayout/1.sh && xmnoad --restart")
+        , ("M-C-a", spawn "sh /home/twoonesecond/.screenlayout/2.sh && xmonad --restart")
 
     -- Windows
         , ("M-q", kill1)                           -- Kill the currently focused client
@@ -119,11 +119,6 @@ myKeys =
         , ("M-M1-k", spawn "amixer set Master 5%+ unmute")
         , ("M-M1-j", spawn "amixer set Master 5%- unmute")
 
-    -- Media keys
-        , ("<XF86AudioPlay>", spawn "mocp --toggle-pause")
-        , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
-        , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
-
     -- Switch keyboard layout
         , ("M-C-1", spawn "setxkbmap -v us -variant colemak")    -- Enable colemak layout
         , ("M-C-2", spawn "setxkbmap us")         -- Enable us layout
@@ -145,9 +140,14 @@ myKeys =
 --        , ("M-M1-y", spawn (myTerminal ++ " -e youtube-viewer"))
 
     -- Multimedia Keys
+	, ("<XF86AudioPlay>", spawn "mocp --toggle-pause")
+	, ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
+	, ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
 --        , ("<XF86AudioPrev>", spawn "cmus prev")
 --        , ("<XF86AudioNext>", spawn "cmus next")
---        , ("<XF86AudioMute>",   spawn "amixer set Master toggle")  -- Bug prevents it from toggling correctly in 12.04.
+        , ("<XF86AudioMute>",   spawn "amixer set Master toggle")  -- Bug prevents it from toggling correctly in 12.04.
+        , ("<XF86MonBrightnessUp>", spawn "light -A 5")
+        , ("<XF86MonBrightnessDown>", spawn "light -U 5")
 --        , ("<XF86HomePage>", spawn "firefox")
 --        , ("<XF86Search>", safeSpawn "firefox" ["https://www.google.com/"])
 --        , ("<XF86Mail>", runOrRaise "geary" (resource =? "thunderbird"))

@@ -49,12 +49,12 @@ myStartupHook :: X ()
 myStartupHook = do
             spawnOnce "nitrogen --restore &"
 	    --spawnOnce "wallset --video ~/Videos/Retro.mp4"
-            spawnOnce "picom &"
+            spawnOnce "picom --backend glx &"
             spawnOnce "urxvtd &"
+	    spawnOnce "synching --no-browser &"
             spawnOnce "nm-applet &"
             --spawnOnce "xautolock -time 10 -corners -+-- -cornerdelay 1 -cornerredelay 10 -locker lock &"
-            spawnOnce "/home/twoonesecond/bin/slack-cmds/slack-start &"
-            spawnOnce "/home/twoonesecond/.screenlayout/dual-monitor.sh &"
+            spawnOnce "/home/twoonesecond/.screenlayout/2.sh &"
 
 -- Manage Hook
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
@@ -80,7 +80,7 @@ myEventHook = mempty
 main :: IO ()
 main = do
     xmproc0 <- spawnPipe "xmobar -x 0 /home/twoonesecond/.xmonad/xmobarrc.0"
-    xmproc1 <- spawnPipe "xmobar -x 1 /home/twoonesecond/.xmonad/xmobarrc.1"
+    xmproc1 <- spawnPipe "xmobar -x 1 /home/twoonesecond/.xmonad/xmobarrc.0"
     xmonad $ ewmh def
         { modMask               = myModMask
         , terminal              = myTerminal
