@@ -52,8 +52,12 @@ myKeys =
     -- Launch dmenu
         , ("M-d", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
 
+    -- Screenshots
+        , ("M-p", spawn "sh /home/twoonesecond/bin/copyscreenshot")
+        , ("M-S-p", spawn "sh /home/twoonesecond/bin/savescreenshot")
+
     -- Monitors
-        , ("M-C-s", spawn "sh /home/twoonesecond/.screenlayout/1.sh && xmnoad --restart")
+        , ("M-C-s", spawn "sh /home/twoonesecond/.screenlayout/1.sh && xmonad --restart")
         , ("M-C-a", spawn "sh /home/twoonesecond/.screenlayout/2.sh && xmonad --restart")
 
     -- Windows
@@ -124,6 +128,7 @@ myKeys =
         , ("M-C-2", spawn "setxkbmap us")         -- Enable us layout
 
     --- My Applications (Super+Alt+Key)
+        , ("M-c", spawn (myTerminal ++ " --hold -e cal"))
 --        , ("M-M1-a", spawn (myTerminal ++ " -e ncpamixer"))
 --        , ("M-M1-b", spawn "surf www.youtube.com/c/DistroTube/")
 --        , ("M-M1-e", spawn (myTerminal ++ " -e neomutt"))

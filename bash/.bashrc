@@ -96,6 +96,9 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
+# Use trash
+alias r='trash'
+
 # List installed packages
 alias installed-packages='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base-devel | sort | uniq)'
 
@@ -127,6 +130,8 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 alias sc='cd /home/twoonesecond/School; ls'
 
 # SSH Into raspberrypi
-alias pi='sshpass -p 0165 ssh pi@192.168.1.208'
+alias pi='ssh pi@192.168.1.208'
+
+alias td='nvim ~/todo'
 
 # }}}
