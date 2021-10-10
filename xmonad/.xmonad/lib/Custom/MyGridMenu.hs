@@ -36,7 +36,8 @@ spawnSelected' lst = gridselect conf lst >>= flip whenJust spawn
                     , gs_font         = myFont
                     }
 
-myAppGrid = [ ("Audio", myTerminal ++ " -e alsamixer")
+myAppGrid = [ --("Audio", myTerminal ++ " -e alsamixer")
+              ("Audio", "pavucontrol" )
             , ("Mocp",  myTerminal ++ " -e mocp")
             , ("Browser", "brave")
             , ("Gimp", "gimp")

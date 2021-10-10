@@ -84,6 +84,9 @@ alias pacsyu='sudo pacman -Syyu'
 alias yaysyu='yay -Syu --noconfirm'
 alias cleanup='sudo pacman -Rsn $(pacman -Qtdq)'
 
+# Add color
+alias grep='grep --color=auto'
+
 # ls shortcuts
 alias ls='ls --color=auto --group-directories-first'
 alias sl='ls'
@@ -128,6 +131,9 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 
 # Move to school folder
 alias sc='cd /home/twoonesecond/School; ls'
+
+# Move to tor folder
+alias tr='cd /home/twoonesecond/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads; ls'
 
 # SSH Into raspberrypi
 alias pi='ssh pi@192.168.1.208'

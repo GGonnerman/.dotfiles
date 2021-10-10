@@ -124,8 +124,8 @@ myKeys =
         , ("M-M1-j", spawn "amixer set Master 5%- unmute")
 
     -- Switch keyboard layout
-        , ("M-C-1", spawn "setxkbmap -v us -variant colemak")    -- Enable colemak layout
-        , ("M-C-2", spawn "setxkbmap us")         -- Enable us layout
+    --    , ("M-C-1", spawn "setxkbmap -v us -variant colemak")    -- Enable colemak layout
+    --    , ("M-C-2", spawn "setxkbmap us")         -- Enable us layout
 
     --- My Applications (Super+Alt+Key)
         , ("M-c", spawn (myTerminal ++ " --hold -e cal"))

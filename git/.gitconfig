@@ -3,3 +3,5 @@
 	email = gaston95g@gmail.com
 [init]
 	defaultBranch = master
+[color]
+	ui = auto
