@@ -83,6 +83,7 @@ ex ()
 alias pacsyu='sudo pacman -Syyu'
 alias yaysyu='yay -Syu --noconfirm'
 alias cleanup='sudo pacman -Rsn $(pacman -Qtdq)'
+alias update='yay -Syu && xmonad --recompile && xmonad --restart'
 
 # Add color
 alias grep='grep --color=auto'
@@ -139,5 +140,9 @@ alias tr='cd /home/twoonesecond/.local/share/torbrowser/tbb/x86_64/tor-browser_e
 alias pi='ssh pi@192.168.1.208'
 
 alias td='nvim ~/todo'
+
+function calc {
+  python -c "print($@)"
+}
 
 # }}}
