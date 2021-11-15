@@ -132,12 +132,17 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 
 # Move to school folder
 alias sc='cd /home/twoonesecond/School; ls'
+alias scc='cd /home/twoonesecond/School/Composition-1; ls'
+alias sce='cd /home/twoonesecond/School/Env-Sci; ls'
+alias scl='cd /home/twoonesecond/School/Env-Sci-Lab; ls'
+alias scu='cd /home/twoonesecond/School/US-History; ls'
+alias scw='cd /home/twoonesecond/School/Western-Civ; ls'
 
 # Move to tor folder
 alias tr='cd /home/twoonesecond/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads; ls'
 
 # SSH Into raspberrypi
-alias pi='ssh pi@192.168.1.208'
+alias pi='ssh pi@192.168.1.223'
 
 alias td='nvim ~/todo'
 
