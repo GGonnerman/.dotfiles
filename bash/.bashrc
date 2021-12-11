@@ -127,6 +127,8 @@ alias day='redshift -x >/dev/null'
 # Terminal bin
 alias tb='nc termbin.com 9999'
 
+alias sourcebash='source ~/.bashrc'
+
 # Terminal rickroll
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
@@ -145,6 +147,13 @@ alias tr='cd /home/twoonesecond/.local/share/torbrowser/tbb/x86_64/tor-browser_e
 alias pi='ssh pi@192.168.1.223'
 
 alias td='nvim ~/todo'
+
+alias gstatus='git status'
+alias gadd='git add'
+alias gcommit='git commit'
+alias gpush='git push'
+alias gpull='git pull'
+alias gdiff='git diff'
 
 function calc {
   python -c "print($@)"
