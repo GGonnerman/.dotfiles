@@ -93,7 +93,8 @@ alias ls='ls --color=auto --group-directories-first'
 alias sl='ls'
 alias  l='ls'
 alias ll='ls -l'
-alias la='ls -a'
+alias la='ls -A'
+alias lla='ls -llA'
 
 # Confirm before overwriting
 alias cp='cp -i'
