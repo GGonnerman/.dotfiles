@@ -160,4 +160,18 @@ function calc {
   python -c "print($@)"
 }
 
+function generate-key {
+  string=$( ls -lA ~/.ssh )
+  if [[ $string == *"pub"* ]]; then
+      echo "Public key already exists"
+      return
+  fi
+  ssh-keygen -t ed25519 -C "gaston95g@gmail.com"
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_ed25519
+  xclip -sel clip ~/.ssh/id_ed25519.pub && echo "Copied public key to clipboard"
+  echo "To copy again: xclip -sel clip ~/.ssh/id_ed25519.pub"
+  echo "https://github.com/settings/ssh/new"
+}
+
 # }}}
