@@ -98,7 +98,7 @@ alias la='ls -a'
 # Confirm before overwriting
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -i'
+alias rm='rm -i --one-file-system'
 
 # Use trash
 alias r='trash'
@@ -107,8 +107,9 @@ alias r='trash'
 alias installed-packages='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base-devel | sort | uniq)'
 
 # Youtube best audio/video formats, ignore errors
-alias youtube-mp3='youtube-dl -f bestaudio --audio-quality 0 --audio-format mp3 -i -x --extract-audio'
-alias youtube-mp4='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" -i'
+alias youtube-m4a='yt-dlp --audio-quality 0 --audio-format m4a --extract-audio --ignore-errors'
+alias youtube-mp3='yt-dlp --audio-quality 0 --audio-format mp3 --extract-audio --ignore-errors'
+alias youtube-mp4='yt-dlp --format mp4 --ignore-errors'
 
 # Locally serve a website
 alias serve='browser-sync start -s -f . --no-notify --host 127.0.0.1 --port 9000'
