@@ -89,7 +89,7 @@ alias update='yay -Syu && xmonad --recompile && xmonad --restart'
 alias grep='grep --color=auto'
 
 # ls shortcuts
-alias ls='ls --color=auto --group-directories-first'
+alias ls='ls --human-readable --color=auto --group-directories-first'
 alias sl='ls'
 alias  l='ls'
 alias ll='ls -l'
@@ -151,6 +151,7 @@ alias pi='ssh pi@192.168.1.223'
 alias td='nvim ~/todo'
 
 alias gstatus='git status'
+alias gclone='git clone'
 alias gadd='git add'
 alias gcommit='git commit'
 alias gpush='git push'
@@ -173,6 +174,23 @@ function generate-key {
   xclip -sel clip ~/.ssh/id_ed25519.pub && echo "Copied public key to clipboard"
   echo "To copy again: xclip -sel clip ~/.ssh/id_ed25519.pub"
   echo "https://github.com/settings/ssh/new"
+}
+
+function translate_ts {
+    original_name=$( ls | grep -Pi "\[S$1E0?$2\] .*ts" )
+    new_name="${original_name%%.ts}.mp4"
+
+    if [ -z "$original_name" ]; then
+	echo "No string found for S$1E$2"
+	return
+    fi
+
+    echo "Season $1, Episode $2: $original_name"
+    echo ""
+    echo "ffmpeg -i \"$original_name\" -map 0 -c copy \"$new_name\""
+
+    ffmpeg -i "$original_name" -map 0 -c copy "$new_name"
+    mv "$original_name" "old/$original_name"
 }
 
 # }}}
