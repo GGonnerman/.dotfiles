@@ -22,7 +22,7 @@ Config { font = "xft:Mononoki Nerd Font:pixelsize=12:antialias=true:hinting=true
                       -- Check for pacman updates
                     , Run Com "/home/twoonesecond/bin/pacupdate" [] "pacupdate" 1000
                       -- Check for volume
-                    , Run Com "/home/twoonesecond/bin/get-volume-xmobar" [] "get-volume-xmobar" 10
+                    , Run Com "/home/twoonesecond/bin/get-volume-xmobar" [] "get-volume-xmobar" 1
                       -- Check for current song
                     , Run Com "/home/twoonesecond/bin/song-status-xmobar" [] "song-status-xmobar" 10
                       -- Clickable workspaces
