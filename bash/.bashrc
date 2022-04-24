@@ -1,5 +1,8 @@
 # {{{ EXPORTS
 
+# I believe this fixes android-studio gray screen on arch linux
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Setting default programs
 export EDITOR="nvim"			# Set nvim as default text editor
 
@@ -31,7 +34,11 @@ fi
 if [ -d "$HOME/bin" ]; then
 	PATH="$HOME/bin${PATH:+:${PATH}}"
 fi
-# Add npm
+
+# TODO: You have to manually set npm global install to specified path with the command blow:
+# npm config set prefix '~/.npm-global'
+
+# Add npm bin path
 if [ -d "$HOME/.npm-global/bin" ]; then
 	PATH="$HOME/.npm-global/bin:$PATH"
 fi
@@ -80,10 +87,11 @@ ex ()
 # {{{ ALIASES
 
 # Package management
-alias pacsyu='sudo pacman -Syyu'
-alias yaysyu='yay -Syu --noconfirm'
 alias cleanup='sudo pacman -Rsn $(pacman -Qtdq)'
 alias update='yay -Syu && xmonad --recompile && xmonad --restart'
+
+# List installed packages
+alias installed-packages='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base-devel | sort | uniq)'
 
 # Add color
 alias grep='grep --color=auto'
@@ -104,19 +112,13 @@ alias rm='rm -i --one-file-system'
 # Use trash
 alias r='trash'
 
-# List installed packages
-alias installed-packages='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base-devel | sort | uniq)'
-
 # Youtube best audio/video formats, ignore errors
 alias youtube-m4a='yt-dlp --audio-quality 0 --audio-format m4a --extract-audio --ignore-errors'
 alias youtube-mp3='yt-dlp --audio-quality 0 --audio-format mp3 --extract-audio --ignore-errors'
 alias youtube-mp4='yt-dlp --format mp4 --ignore-errors'
 
 # Locally serve a website
-alias serve='browser-sync start -s -f . --no-notify --host 127.0.0.1 --port 9000'
-
-# Make keepass readable
-alias keepass='QT_QPA_PLATFORMTHEME=qt5ct keepassxc'
+alias serve='browser-sync start --server --files . --no-notify --host 127.0.0.1 --port 9000'
 
 # Mount/unmount android easily
 alias mount-android='simple-mtpfs --device 1 ~/mnt'
@@ -136,11 +138,11 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 
 # Move to school folder
 alias sc='cd /home/twoonesecond/School; ls'
-alias scc='cd /home/twoonesecond/School/Composition-1; ls'
-alias sce='cd /home/twoonesecond/School/Env-Sci; ls'
-alias scl='cd /home/twoonesecond/School/Env-Sci-Lab; ls'
-alias scu='cd /home/twoonesecond/School/US-History; ls'
-alias scw='cd /home/twoonesecond/School/Western-Civ; ls'
+alias scc='cd /home/twoonesecond/School/Composition-II; ls'
+alias sce='cd /home/twoonesecond/School/East-Asian-Cultures; ls'
+alias scs='cd /home/twoonesecond/School/Statistics; ls'
+alias scb='cd /home/twoonesecond/School/Intro-to-Business; ls'
+alias scw='cd /home/twoonesecond/School/World-Regional-Geography; ls'
 
 # Move to tor folder
 alias tr='cd /home/twoonesecond/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads; ls'
@@ -176,7 +178,7 @@ function generate-key {
   echo "https://github.com/settings/ssh/new"
 }
 
-function translate_ts {
+function translate_ep_ts {
     original_name=$( ls | grep -Pi "\[S$1E0?$2\] .*ts" )
     new_name="${original_name%%.ts}.mp4"
 
@@ -191,6 +193,20 @@ function translate_ts {
 
     ffmpeg -i "$original_name" -map 0 -c copy "$new_name"
     mv "$original_name" "old/$original_name"
+}
+
+function translate_ts {
+    original_name="$1"
+    new_name="${original_name%%.ts}.mp4"
+    #ffmpeg -i "$original_name" -map 0 -c copy "$new_name"
+    ffmpeg -i "$original_name" -c copy "$new_name" && trash "$original_name" || rm -f "$new_name"
+}
+
+function translate_mkv {
+    original_name="$1"
+    new_name="${original_name%%.mkv}.mp4"
+    #ffmpeg -i "$original_name" -map 0 -c copy "$new_name"
+    ffmpeg -i "$original_name" -c copy "$new_name" && trash "$original_name" || rm -f "$new_name"
 }
 
 # }}}
