@@ -175,4 +175,16 @@ function generate-key {
   echo "https://github.com/settings/ssh/new"
 }
 
+function mount_media {
+    sudo cryptsetup luksOpen UUID=6f151bf8-1f72-452d-b16f-5e4782d7c910 Files
+    sudo mount /dev/mapper/Files /mnt/Files
+}
+
+function bind_media {
+    sudo chgrp -R media media_files/
+    find media_files/ -type f -exec chmod 664 {} +
+    find media_files/ -type d -exec chmod 775 {} +
+    find media_files/ -type d -exec chmod g+s {} +
+}
+
 # }}}
