@@ -188,6 +188,7 @@ function bind_media {
     find media_files/ -type f -exec chmod 664 {} +
     find media_files/ -type d -exec chmod 775 {} +
     find media_files/ -type d -exec chmod g+s {} +
+}
 
 function translate_ep_ts {
     original_name=$( ls | grep -Pi "\[S$1E0?$2\] .*ts" )
@@ -221,3 +222,4 @@ function translate_mkv {
 }
 
 # }}}
+
