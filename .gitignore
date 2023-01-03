@@ -1,9 +1,0 @@
-*.hi
-*.o
-xmonad.errors
-xmonad-x86_64-linux
-nvim/.config/nvim/plugged/
-mocp/.moc/equalizer
-mocp/.moc/last_directory
-mocp/.moc/playlist.m3u
-mocp/.moc/softmixer
